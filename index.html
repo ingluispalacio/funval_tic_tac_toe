@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" class="m-0 p-0 box-border" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe Game</title>
+    <link rel="stylesheet" href="./css/output.css" />
+  </head>
+  <body
+    class="w-full min-h-screen bg-gray-200 flex flex-col justify-center items-center dark:bg-[#192a32] dark:text-[#a7bdc8] px-6"
+  >
+    <div
+      id="principal-view"
+      class="flex flex-col justify-center items-center w-full gap-12 transition-all duration-300 h-[80%] md:w-[70%] lg:w-[30%]"
+    >
+      <div class="flex">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="6.5"
+          stroke="currentColor"
+          class="size-10 text-[#31c4be]"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="6"
+          stroke="currentColor"
+          class="size-10 text-[#f2b237]"
+        >
+          <circle cx="12" cy="12" r="8" />
+        </svg>
+      </div>
+      <div
+        class="bg-gray-400 h-40 p-4 w-full gap-2 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex flex-col justify-center items-center rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+      >
+        <label class="font-bold">PICK PlAYER 1'S MARK</label>
+        <div
+          class="flex w-full h-full gap-4 rounded-lg justify-center bg-gray-200 dark:bg-[#192a32] dark:text-[#a7bdc8]"
+        >
+          <svg
+            id="pick-x"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="6.5"
+            stroke="currentColor"
+            class="size-16 w-[50%] text-[#a8bec9] p-2 cursor-pointer transition-all duration-100 rounded-lg "
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+          <svg
+            id="pick-o"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="6"
+            stroke="currentColor"
+            class="size-16 p-2 rounded-lg w-[50%] bg-[#a8bec9] text-[#192a32] cursor-pointer transition-all duration-100 "
+          >
+            <circle cx="12" cy="12" r="8" />
+          </svg>
+        </div>
+        <label class="font-light">REMENBER: X GOES FIRTS</label>
+      </div>
+      <div class="flex flex-col w-full text-[#192a32] gap-4">
+        <button
+          id="btn-cpu"
+          class="p-4 font-bold flex justify-center items-center rounded-lg bg-[#f2b237] shadow-[0_6px_0_rgba(111,65,8,1)]"
+        >
+          NEW GAME (VS CPU)
+        </button>
+        <button
+          id="btn-player"
+          class="p-4 font-bold flex justify-center items-center rounded-lg bg-[#31c4be] shadow-[0_6px_0_rgba(8,111,105,1)]"
+        >
+          NEW GAME (VS PLAYER)
+        </button>
+      </div>
+    </div>
+    <div id="game-view" class="hidden transition-all duration-300 h-[80%] ">
+      <header class="flex justify-between items-center gap-4 w-full pt-6">
+        <div class="flex">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="6.5"
+            stroke="currentColor"
+            class="size-10 text-[#31c4be]"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M6 18 18 6M6 6l12 12"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="6"
+            stroke="currentColor"
+            class="size-10 text-[#f2b237]"
+          >
+            <circle cx="12" cy="12" r="8" />
+          </svg>
+        </div>
+        <button
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center gap-1 items-center h-10 px-4 py-2 rounded-lg dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+          <span id="turnIcon"></span>
+          <label class="font-extrabold">TURN</label>
+        </button>
+        <button
+          id="resetBtn"
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-12 w-12 rounded-lg dark:bg-[#a8bec9] dark:shadow-[0_6px_0_rgba(0,0,0,0.45)]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2.5"
+            stroke="currentColor"
+            class="size-6 text-[#1c323d]"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="m15 15 6-6m0 0-6-6m6 6H9a6 6 0 0 0 0 12h3"
+            />
+          </svg>
+        </button>
+      </header>
+      <main class="pt-20 w-full grid grid-cols-3 grid-rows-3 gap-4">
+        <div
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+          
+        </div>
+        <div
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+         
+        </div>
+        <div
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+          
+        </div>
+        <div
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+          
+        </div>
+        <div
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+        
+        </div>
+        <div
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+          
+        </div>
+        <div
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+         
+        </div>
+        <div
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+          
+        </div>
+        <div
+          class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
+        >
+          
+        </div>
+
+        <div
+          class="bg-[#31c4be] text-[#1a2a34] text-center rounded-2xl flex flex-col p-2"
+        >
+          <label for="">01</label>
+          <label class="font-bold -mt-2">texto</label>
+        </div>
+        <div
+          class="bg-[#a8bec9] text-[#1a2a34] text-center rounded-2xl flex flex-col p-2"
+        >
+          <label for="">02</label>
+          <label class="font-bold -mt-2">texto</label>
+        </div>
+        <div
+          class="bg-[#f2b237] text-[#1a2a34] text-center rounded-2xl flex flex-col p-2"
+        >
+          <div>03</div>
+          <label class="font-bold -mt-2">texto</label>
+        </div>
+      </main>
+    </div>
+    <footer class="flex justify-between items-center mt-20 w-full h-[20%]">
+      <label class="text-xs">© 2025 Luis Palacio. All rights reserved.</label>
+      <label class="rounded-full cursor-pointer">
+        <input
+          type="checkbox"
+          value=""
+          class="sr-only peer"
+          onclick="toggleDarkMode(event)"
+        />
+        <div
+          class="relative w-13 h-7 bg-gray-400 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 dark:peer-checked:bg-indigo-900 flex items-center justify-between py-1"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="size-6"
+          >
+            <path
+              d="M10 2a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 2ZM10 15a.75.75 0 0 1 .75.75v1.5a.75.75 0 0 1-1.5 0v-1.5A.75.75 0 0 1 10 15ZM10 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6ZM15.657 5.404a.75.75 0 1 0-1.06-1.06l-1.061 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM6.464 14.596a.75.75 0 1 0-1.06-1.06l-1.06 1.06a.75.75 0 0 0 1.06 1.06l1.06-1.06ZM18 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 18 10ZM5 10a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1 0-1.5h1.5A.75.75 0 0 1 5 10ZM14.596 15.657a.75.75 0 0 0 1.06-1.06l-1.06-1.061a.75.75 0 1 0-1.06 1.06l1.06 1.06ZM5.404 6.464a.75.75 0 0 0 1.06-1.06l-1.06-1.06a.75.75 0 1 0-1.061 1.06l1.06 1.06Z"
+            />
+          </svg>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            class="size-6"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M7.455 2.004a.75.75 0 0 1 .26.77 7 7 0 0 0 9.958 7.967.75.75 0 0 1 1.067.853A8.5 8.5 0 1 1 6.647 1.921a.75.75 0 0 1 .808.083Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+      </label>
+    </footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>
