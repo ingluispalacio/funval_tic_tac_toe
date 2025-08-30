@@ -53,7 +53,7 @@
             viewBox="0 0 24 24"
             stroke-width="6.5"
             stroke="currentColor"
-            class="size-16 w-[50%] text-[#a8bec9] p-2 cursor-pointer transition-all duration-100 rounded-lg "
+            class="size-16 w-[50%] bg-[#a8bec9] text-[#192a32] p-2 cursor-pointer transition-all duration-100 rounded-lg"
           >
             <path
               stroke-linecap="round"
@@ -68,7 +68,7 @@
             viewBox="0 0 24 24"
             stroke-width="6"
             stroke="currentColor"
-            class="size-16 p-2 rounded-lg w-[50%] bg-[#a8bec9] text-[#192a32] cursor-pointer transition-all duration-100 "
+            class="size-16 p-2 rounded-lg w-[50%] text-[#a8bec9] cursor-pointer transition-all duration-100"
           >
             <circle cx="12" cy="12" r="8" />
           </svg>
@@ -90,7 +90,7 @@
         </button>
       </div>
     </div>
-    <div id="game-view" class="hidden transition-all duration-300 h-[80%] ">
+    <div id="game-view" class="hidden transition-all duration-300 h-[80%]">
       <header class="flex justify-between items-center gap-4 w-full pt-6">
         <div class="flex">
           <svg
@@ -125,7 +125,6 @@
           <label class="font-extrabold">TURN</label>
         </button>
         <button
-          id="resetBtn"
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-12 w-12 rounded-lg dark:bg-[#a8bec9] dark:shadow-[0_6px_0_rgba(0,0,0,0.45)]"
         >
           <svg
@@ -147,69 +146,81 @@
       <main class="pt-20 w-full grid grid-cols-3 grid-rows-3 gap-4">
         <div
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
-        >
-          
-        </div>
+        ></div>
         <div
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
-        >
-         
-        </div>
+        ></div>
         <div
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
-        >
-          
-        </div>
+        ></div>
         <div
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
-        >
-          
-        </div>
+        ></div>
         <div
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
-        >
-        
-        </div>
+        ></div>
         <div
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
-        >
-          
-        </div>
+        ></div>
         <div
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
-        >
-         
-        </div>
+        ></div>
         <div
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
-        >
-          
-        </div>
+        ></div>
         <div
           class="bg-gray-400 shadow-[0_6px_0_rgba(0,0,0,0.45)] flex justify-center items-center h-17 rounded-2xl dark:bg-[#1f3540] dark:shadow-[0_6px_0_rgba(15,33,41,255)]"
-        >
-          
-        </div>
+        ></div>
 
-        <div
-          class="bg-[#31c4be] text-[#1a2a34] text-center rounded-2xl flex flex-col p-2"
+        <span
+          id="bg-player1"
+          class="text-[#1a2a34] h-17 text-center rounded-2xl flex flex-col p-2"
         >
-          <label for="">01</label>
-          <label class="font-bold -mt-2">texto</label>
-        </div>
-        <div
-          class="bg-[#a8bec9] text-[#1a2a34] text-center rounded-2xl flex flex-col p-2"
+          <label id="label-player1"></label>
+          <label class="font-bold text-xl" id="player1-count"></label>
+        </span>
+        <span
+          class="bg-[#a8bec9] text-[#1a2a34] h-17 text-center rounded-2xl flex flex-col p-2"
         >
-          <label for="">02</label>
-          <label class="font-bold -mt-2">texto</label>
-        </div>
-        <div
-          class="bg-[#f2b237] text-[#1a2a34] text-center rounded-2xl flex flex-col p-2"
+          <label>TIES</label>
+          <label class="font-bold text-xl" id="tie-count"></label>
+        </span>
+        <span
+          id="bg-player2"
+          class="text-[#1a2a34] h-17 text-center rounded-2xl flex flex-col p-2"
         >
-          <div>03</div>
-          <label class="font-bold -mt-2">texto</label>
-        </div>
+          <label id="label-player2"></label>
+          <label class="font-bold text-xl" id="player2-count"></label>
+        </span>
       </main>
+    </div>
+    <div
+      id="modal"
+      class="hidden fixed inset-0 bg-black/60 bg-opacity-50 items-center justify-center z-50"
+    >
+      <div class="bg-[#1f3540] w-full p-6 relative text-center">
+        <h2 class="text-sx font-semibold text-[#a7bdc8]">YOU WON!</h2>
+        <div
+          id="div-winner"
+          class="p-4 flex text-4xl font-bold justify-center items-center"
+        >
+      </div>
+
+        <div class="flex justify-center text-[#1f3540] gap-4">
+          <button
+            id="btn-quit-game"
+            class="px-4 py-2 bg-[#a8bec9] font-semibold rounded-lg hover:bg-gray-400 transition cursor-pointer"
+          >
+            QUIT
+          </button>
+          <button
+            id="btn-next-round"
+            class="px-4 py-2 bg-[#f2b237] font-semibold rounded-lg hover:bg-[#ce9730] transition cursor-pointer"
+          >
+            NEXT ROUND
+          </button>
+        </div>
+      </div>
     </div>
     <footer class="flex justify-between items-center mt-20 w-full h-[20%]">
       <label class="text-xs">© 2025 Luis Palacio. All rights reserved.</label>
@@ -221,7 +232,7 @@
           onclick="toggleDarkMode(event)"
         />
         <div
-          class="relative w-13 h-7 bg-gray-400 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 dark:peer-checked:bg-indigo-900 flex items-center justify-between py-1"
+          class="relative w-13 h-7 bg-gray-400 peer-focus:outline-none rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 dark:peer-checked:bg-[#243c4c] flex items-center justify-between py-1"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
